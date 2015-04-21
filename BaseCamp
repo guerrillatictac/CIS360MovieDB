@@ -1,0 +1,55 @@
+functions: AI-IDs, S=String, I=Integer, F=Float,
+Add Actor:
+INSERT INTO ACTOR(Fname, Lname, Awards, Networth) VALUES('string1','string2',); 
+
+//Delete Actor:No cascade;
+DELETE FROM ACTOR,
+WHERE SfName==fName AND SlName==lName;<--use ? for wildcard;
+
+//Update Actor:
+UPDATE ACTOR
+SET FName=SfName,
+    LName=SlName,
+    Awards=SAwards,
+    Networth=Fworth;
+ 
+//Add Movie:
+INSERT INTO MOVIE(Title, Director, YrReleased, Runtime, Rating, Budget, Revenue, Writer, Awards) VALUES('SmovieTitle','Sdirector','IyearNum','StimeNum','Srating','FBudget','FRevenue','Swriter','Sawards');
+
+Delete Movie:No cascade;
+DELETE FROM MOVIES,
+WHERE STitle==Title AND Iyear==yrReleased;
+
+UPDATE MOVIE
+SET Title=Stitle,
+    Director=Sdirector,
+    YrRealeased=IYear,
+    Runtime=ITime,
+    Rating=Srating,
+    Budget=Fbudget,
+    Revenue=Frevenue,
+    Writing=Swriting,
+    Awards=Sawards;
+
+//Add Studio:
+INSERT INTO FILM_STUDIO(Name, CEOFName, CEOLName YrFounded, Location) VALUES('SstudioName','SCEOfName','SCEOlName','IyearFounded','Slocale');
+
+//Delete Studio:No cascade;
+DELETE FROM FILM_STUDIO,
+WHERE Sname==Name AND Slocation==Location;
+ Update Studio;
+
+//Add Producer:
+INSERT INTO PRODUCUTION_COMPANY(Name, CEOFName, CEOLName YrFounded, Headquarters) VALUES('SproductionCompanyName','SCEOfName','SCEOlName','IyearFounded','Sheadquarters');
+
+//Delete Productioncompany:No cascade;
+DELETE FROM PRODUCTION_COMPANY,
+WHERE SName==Name;
+
+UPDATE PRODUCTION_COMPANY
+SET Name=SName,
+    CEOFName=SCEOFname,
+    CEOLName=SCEOLName,
+    YrFounded=IYear,
+    Headquarters=SHeadquarters;
+
