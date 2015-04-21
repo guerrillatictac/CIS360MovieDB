@@ -1,0 +1,90 @@
+Taylor Wilcox, Kyle Williams, Jordan Sumner
+
+1
+
+Select Pname
+From PROJECT
+Where Plocation = 'Houston';
+
+2
+
+Select *
+From EMPLOYEE
+Where Lname Like 'W%';
+
+
+3
+
+Select Lname, Address, Dno, Dname
+From Department, Employee
+Where Dno = Dnumber and Dname = 'Research';
+
+4
+
+Select Lname, Address, Dno, Dname
+From Department JOIN Employee on Dnumber = Dno
+Where Dname = 'Research';
+
+5
+
+Select Ssn, Lname, Sex
+From Employee JOIN Works_On on (Essn = Ssn and Sex = 'F') 
+              JOIN Project on (Pno = Pnumber)
+Where Plocation = 'Stafford';
+
+6
+
+Select E.Ssn, E.Lname, E.Sex
+From Employee E JOIN Works_On W on (W.Essn = E.Ssn and E.Sex = 'F') 
+              JOIN Project P on (W.Pno = P.Pnumber)
+Where Plocation = 'Stafford';
+
+7
+
+Select Dname, Dlocation
+From Department Natural Join DEPT_LOCATIONS
+Where Dlocation in ('Houston','Stafford');
+
+
+8
+
+Select Unique(Plocation)
+From Project
+Order By Plocation ASC;
+
+
+9
+
+SELECT Pname
+FROM Project
+Where Plocation in ('Sugarland')
+Union (Select Pname
+From Dept_Locations , Project
+WHERE Dnum = Dnumber and Dlocation in ('Sugarland'));
+
+
+10
+
+
+Select *
+From Dependent
+Where Bdate Between To_Date ('1970-01-01', 'yyyy-mm-dd') and To_Date ('1979-12/31', 'yyyy-mm-dd'); 
+
+
+11
+
+
+SELECT *
+FROM Department Natural Join Dept_Locations
+WHERE Dlocation in ('Philadelphia', 'Atlanta', 'Chicago');
+
+
+12
+
+Select Lname, 1.2*Salary as "After_20%"
+From Employee
+Where (1.2*Salary) > 35000;
+
+//We got more results than your given result. But the math is correct. 
+
+
