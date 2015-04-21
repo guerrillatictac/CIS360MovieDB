@@ -7,7 +7,7 @@
 CREATE TABLE Actors (
   fname    varchar2(15) not null, 
   lname    varchar2(15) not null,
-  BaconNo      char(7),
+  BaconNo      char(6) not null,
   Networth    number(9),
   Awards  varchar2(42),
   primary key (BaconNo),
@@ -17,7 +17,7 @@ CREATE TABLE Actors (
 
 CREATE TABLE Movies (
   Title        varchar2(25) not null,
-  Director      number(4),
+  Director      number(4) not null,
   YearReleased char(9) not null, 
   Runtime number(4),
   Rating varchar2(5),
@@ -32,19 +32,19 @@ CREATE TABLE Movies (
 
 CREATE TABLE FilmStudio (
   StudioID  char(25) not null,
-  Name      number(4),
+  Name      number(4) not null,
   CEO       varchar2(15) not null, 
-  YearFounded date,
+  YearFounded date(YYYY),
   Location varchar(25),
   primary key (StudioID,Location)
 
 );
 
 CREATE TABLE ProductionCompany (
-  CompanyID        varchar2(25) not null,
-  Name      number(4),
+  CompanyID varchar2(25) not null,
+  Name      number(4) not null,
   CEO       char(9) not null, 
-  YearFounded date,
+  YearFounded date(YYYY),
   Headquarters char(),
   primary key (CompanyID,Headquarters)
 
@@ -61,10 +61,10 @@ CREATE TABLE FilmStudioLocation (
 );
 
 CREATE TABLE ActorAwards (
-  Fname   number(4),
-  Lname varchar2(15), 
-  AwardName,
-  YearAwarded,
+  Fname   number(4) not null,
+  Lname varchar2(15) not null, 
+  AwardName varchar2(42),
+  YearAwarded date(YYYY),
   primary key (Fname, Lname, AwardName, YearAwarded),
   foreign key (Fname) references Actor(Fname),
   foreign key (Lname) references Actor(Lname)
@@ -72,10 +72,10 @@ CREATE TABLE ActorAwards (
 );
 
 CREATE TABLE ActsIn (
-  Fname   number(4),
-  Lname varchar2(15), 
-  Title,
-  Yearacted,
+  Fname   number(4) not null,
+  Lname varchar2(15) not null, 
+  Title not null,
+  Yearacted date(YYYY),
   primary key (Fname, Lname, Title, Yearacted),
   foreign key (Fname) references Actor(Fname),
   foreign key (Lname) references Actor(Lname)
@@ -83,9 +83,9 @@ CREATE TABLE ActsIn (
 );
 
 CREATE TABLE Creates (
-  StudioID   number(4),
-  YrReleased varchar2(15), 
-  Title,
+  StudioID   number(4) not null,
+  YrReleased date(YYYY) not null, 
+  Title not null,
   primary key (Title, YrReleased, Title),
   foreign key (StudioID) references FilmStudio(StudioID),
   foreign key (Title) references Movie(Title)
@@ -94,8 +94,8 @@ CREATE TABLE Creates (
 
 CREATE TABLE project (
   pname      varchar2(25) not null,
-  pnumber    number(4),
-  plocation  varchar2(15),
+  pnumber    number(4) not null,
+  plocation  varchar2(15) not null,
   dnum       number(4) not null,
   primary key (pnumber),
   unique (pname),
@@ -104,18 +104,18 @@ CREATE TABLE project (
 );
 
 CREATE TABLE MovieAwards (
-  Title   char(9),
+  Title   char(9) not null,
   AwardName    number(4),
-  Yearawarded  number(4,1),
+  Yearawarded  date(YYYY),
   primary key (Title,AwardName,Yearawarded),
   foreign key (Title) references Movies(Title),
 
 );
 
 CREATE TABLE WorksFor (
-  Fname   number(4),
-  Lname varchar2(15), 
-  StudioID,
+  Fname   number(4) not null,
+  Lname varchar2(15) not null, 
+  StudioID not null,
   primary key (Fname, Lname, StudioID),
   foreign key (Fname) references Actor(Fname),
   foreign key (Lname) references Actor(Lname),
@@ -124,18 +124,18 @@ CREATE TABLE WorksFor (
 );
 
 CREATE TABLE MovieWriters (
-  Fname   number(4),
-  Lname varchar2(15), 
-  Title,
-  Yr,
+  Fname   number(4) not null,
+  Lname varchar2(15) not null, 
+  Title not null,
+  Yr date(YYYY),
   primary key (Fname, Lname, Title, Yr),
   foreign key (Title) references Movies(Title)
 
 );
 
 CREATE TABLE Produces (
-  CompanyID   number(4),
-  Title varchar2(15), 
+  CompanyID   number(4) not null,
+  Title varchar2(15) not null, 
   primary key (CompanyID, Title),
   foreign key (CompanyID) references Company(CompanyID),
   foreign key (Title) references Movies(Title)
@@ -143,8 +143,8 @@ CREATE TABLE Produces (
 );  
 
 CREATE TABLE Pays (
-  CompanyID   number(4),
-  StudioID varchar2(15), 
+  CompanyID   number(4) not null,
+  StudioID varchar2(15) not null, 
   primary key (CompanyID, StudioID),
   foreign key (CompanyID) references Company(CompanyID),
   foreign key (StudioID) references FilmStudio(StudioID)
