@@ -1,0 +1,17 @@
+    try {
+        // connection string format
+        // Use "jdbc:oracle:thin:@localhost:1521:xe" to access locally stored Oracle with 'xe' as SID
+        Connection conn = DriverManager.getConnection
+            ("jdbc:oracle:thin:@localhost:1521:xe","glee","glee");
+
+        String query = "select fname, salary from employee where dno = ?";
+        PreparedStatement p = conn.prepareStatement (query); 
+        String ssn = jTextField3.getText();
+        // get ready to provide parameter(s)
+        p.clearParameters();
+
+        // provide parameter to statement.
+        p.setInt(1, Integer.parseInt(ssn));
+        //p.setString(1,ssn);
+        // execute select query p
+        ResultSet r = p.executeQuery();
