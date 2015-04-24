@@ -1,7 +1,7 @@
 
 --Taylor Wilcox, Kyle Williams, Jordan Sumner;
 CREATE TABLE Movies(
-  Title varchar2(42) not null,
+  Title varchar2(100) not null,
   Director varchar2(25) not null,
   YearReleased number(4) not null, 
   Runtime number(4),
@@ -11,12 +11,12 @@ CREATE TABLE Movies(
   Writer varchar(25),
   Awards varchar2(100),
   
-  primary key (Title)
+  primary key (Title, YearReleased)
   
 );
 
 CREATE TABLE MovieAwards(
-  Title   varchar2(42) not null,
+  Title   varchar2(100) not null,
   maAwardName    varchar2(42),
   Yearawarded  number(4),
   primary key (maAwardName)
@@ -24,7 +24,7 @@ CREATE TABLE MovieAwards(
 );
 
 CREATE TABLE Actors (
-  BaconNo      number(6) not null,
+  BaconNo      number(7) not null,
   fname    varchar2(25) not null, 
   lname    varchar2(25) not null,
   Networth    number(9),
@@ -51,7 +51,7 @@ CREATE TABLE FilmStudioLocation (
 
 CREATE TABLE ProductionCompany (
   CompanyID number(9) not null,
-  Name      varchar2(25) not null,
+  PName      varchar2(25) not null,
   CEO       varchar2(25) not null, 
   YearFounded number(4),
   Headquarters varchar2(25),
@@ -61,7 +61,7 @@ CREATE TABLE ProductionCompany (
 
 CREATE TABLE Produces (
   CompanyID number(9),
-  Title varchar2(25)
+  Title varchar2(100)
 
 );
 
@@ -81,7 +81,7 @@ CREATE TABLE ActorAwards (
 CREATE TABLE ActsIn (
   Fname   varchar2(25),
   Lname varchar2(25), 
-  Title varchar2(25),
+  Title varchar2(100),
   Yearacted integer,
   primary key (Fname, Lname, Title, Yearacted)
 
@@ -90,7 +90,7 @@ CREATE TABLE ActsIn (
 CREATE TABLE Creates (
   StudioID   number(9),
   YrReleased number(4), 
-  Title varchar2(25),
+  Title varchar2(100),
   primary key (Title, YrReleased)
 
 );
@@ -107,7 +107,7 @@ CREATE TABLE WorksFor (
 CREATE TABLE MovieWriters (
   Fname varchar2(25),
   Lname varchar2(25), 
-  Title varchar2(25),
+  Title varchar2(100),
   Yr number(4),
   primary key (Fname, Lname, Title, Yr)
 
