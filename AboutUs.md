@@ -6,6 +6,6 @@ Our goal was to, in two weeks:
 *implement the DB using Oracle SQL Developer
 *Provide an application using Java Netbeans IDE which would have functions to update/insert/query the DB
 
-The challenge coming from this is our planning phase had error which we did not have time to correct. The DB was in the end not
+The challenge coming from this is our planning phase had errors which we did not have time to correct. The DB was in the end not
 fully capable of what we set it out to be. In the future we would better plan the DB table attributes and hopefully have
 more time to do so. With tests and an academic showcase to prepare for other classes, this project was very challenging. 
