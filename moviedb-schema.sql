@@ -2,7 +2,7 @@
 --Taylor Wilcox, Kyle Williams, Jordan Sumner;
 CREATE TABLE Movies(
   Title varchar2(42) not null,
-  Director number(4) not null,
+  Director varchar2(25) not null,
   YearReleased number(4) not null, 
   Runtime number(4),
   Rating varchar2(5),
