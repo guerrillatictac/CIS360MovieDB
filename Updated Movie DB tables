@@ -1,7 +1,8 @@
+
 --Taylor Wilcox, Kyle Williams, Jordan Sumner;
 CREATE TABLE Movies(
-  Title varchar2(42) not null,
-  Director number(4) not null,
+  Title varchar2(100) not null,
+  Director varchar2(25) not null,
   YearReleased number(4) not null, 
   Runtime number(4),
   Rating varchar2(5),
@@ -10,67 +11,105 @@ CREATE TABLE Movies(
   Writer varchar(25),
   Awards varchar2(100),
   
-  primary key (Title)
+  primary key (Title, YearReleased)
   
 );
 
 CREATE TABLE MovieAwards(
-  Title   varchar2(42) not null,
+  Title   varchar2(100) not null,
   maAwardName    varchar2(42),
-  Yearawarded  integer,
-  primary key (maAwardName),
-  Constraint fkTitle foreign key (Title) references Movies(Title),
-  Constraint maYearlimit check (Yearawarded > 1900 and Yearawarded <= 2015)
+  Yearawarded  number(4),
+  primary key (maAwardName)
+
 );
 
 CREATE TABLE Actors (
-  BaconNo      number(6) not null,
-  fname    varchar2(15) not null, 
-  lname    varchar2(15) not null,
+  BaconNo      number(7) not null,
+  fname    varchar2(25) not null, 
+  lname    varchar2(25) not null,
   Networth    number(9),
   Awards  varchar2(42),
-  primary key (BaconNo),
-  Constraint fkAwards foreign key (Awards) references MovieAwards(maAwardName)
+  primary key (BaconNo, fname, lname)
+
 );
 
 CREATE TABLE FilmStudio (
-  StudioID  number(25) not null,
-  stName      INT not null,
-  CEO       varchar2(15) not null, 
+  StudioID  number(9) not null,
+  stName      varchar2(25) not null,
+  CEO       varchar2(25) not null, 
   YearFounded NUMBER(4),
   sLocation varchar2(25),
-  primary key (StudioID),
-  Constraint fsYearlimit check(YearFounded > 1900 and YearFounded <= 2015)
---fix year to be variable
+  primary key (StudioID)
 );
 
 
 CREATE TABLE FilmStudioLocation (
-  StudioID   number(25),
-  sLocation varchar2(15),
-  constraint fkstudioid foreign key (StudioID) references FilmStudio(StudioID)
+  StudioID   number(9),
+  sLocation varchar2(15)
   
 );
 
 CREATE TABLE ProductionCompany (
   CompanyID number(9) not null,
-  Name      varchar2(25) not null,
+  PName      varchar2(25) not null,
   CEO       varchar2(25) not null, 
-  YearFounded integer,
+  YearFounded number(4),
   Headquarters varchar2(25),
-  primary key (CompanyID),
-  Constraint pcYearlimit CHECK (YearFounded > 1900 and YearFounded <= 2015)
+  primary key (CompanyID)
   
 );
 
+CREATE TABLE Produces (
+  CompanyID number(9),
+  Title varchar2(100)
+
+);
+
+CREATE TABLE Pays (
+  CompanyID number(9),
+  StudioID number(9)  
+);
 
 CREATE TABLE ActorAwards (
+  Fname   varchar2(25) not null,
+  Lname varchar2(25) not null, 
+  AwardName varchar2(42),
+  YearAwarded number(4),
+  primary key (Fname, Lname, AwardName, YearAwarded)
+);
+
+CREATE TABLE ActsIn (
   Fname   varchar2(25),
   Lname varchar2(25), 
-  AwardName varchar2(42),
-  YearAwarded integer,
-  foreign key (Fname) references Actors(Fname),
-  foreign key (Lname) references Actors(Lname),
-  Constraint aaYearlimit check (YearAwarded > 1900 and YearAwarded <= 2015)
+  Title varchar2(100),
+  Yearacted integer,
+  primary key (Fname, Lname, Title, Yearacted)
+
+);
+
+CREATE TABLE Creates (
+  StudioID   number(9),
+  YrReleased number(4), 
+  Title varchar2(100),
+  primary key (Title, YrReleased)
+
+);
+
+
+CREATE TABLE WorksFor (
+  Fname  varchar2(25) not null,
+  Lname varchar2(25) not null, 
+  StudioID number(9),
+  primary key (Fname, Lname, StudioID)
+
+);
+
+CREATE TABLE MovieWriters (
+  Fname varchar2(25),
+  Lname varchar2(25), 
+  Title varchar2(100),
+  Yr number(4),
+  primary key (Fname, Lname, Title, Yr)
+
 
 );
