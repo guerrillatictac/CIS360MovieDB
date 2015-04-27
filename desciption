@@ -1,0 +1,7 @@
+Jordan Sumner, Taylor Wilcox, Kyle Williams						              4/23/15
+Project part 2: Movie relational database
+Description: Our database stores information about movies, actors, production companies and film studios involved in film production. Each movie has a title, release year, director, and may have a runtime, rating, budget, revenue, writer and awards. Actors do not have to act in a movie to be in the database, assigned a BaconNo as an ID, and must have a first and last name. Actors may have a net-worth and awards. Film studios must have a name a location and may have CEO and year founded. Production Company must have a name, CEO, year founded and headquarters.
+Who did what:
+Jordan Sumner: GUI and some Insert statements.
+Taylor Wilcox: Database Schema, some Insert statements.
+Kyle Williams: Some Insert statements, some schema.
